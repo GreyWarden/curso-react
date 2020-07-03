@@ -69,19 +69,21 @@ class App extends Component {
     return (
         <div className="App">
           <h1>Hello there!!</h1>
-          <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-              styles={
-                this.state.persons[0].styles}
-              onClickHandler={this.switchNameOnButtonClickHandler.bind(this, 'Hermin!')}
-          />
-          <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              styles={this.state.persons[1].styles}
-              onChangeHandler={this.nameChangedHandler}
-          />
+          <div className="PersonsContainer">
+            <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age}
+                styles={
+                  this.state.persons[0].styles}
+                onClickHandler={this.switchNameOnButtonClickHandler.bind(this, 'Hermin!')}
+            />
+            <Person
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                styles={this.state.persons[1].styles}
+                onChangeHandler={this.nameChangedHandler}
+            />
+          </div>
           <p>
             <button onClick={this.switchNameOnButtonClickHandler.bind(this, 'Herminio')}> Name switcher!</button>
           </p>

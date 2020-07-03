@@ -1,4 +1,5 @@
 import React from 'react';
+import './Person.css'
 
 const person = (
     {
@@ -9,7 +10,7 @@ const person = (
       onChangeHandler
     }
 ) => (
-    <div>
+    <div className='Person'>
       <h2 style={styles} onClick={onClickHandler}>
         My name is {name}, and I'm {age} years old
       </h2>

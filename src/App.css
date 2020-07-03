@@ -1,3 +1,17 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.PersonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 535px) {
+  .PersonsContainer {
+    flex-direction: column;
+  }
 }
