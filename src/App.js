@@ -66,6 +66,15 @@ class App extends Component {
   }
 
   render() {
+    const buttonStyles = {
+      backgroundColor: 'darkred',
+      border: '1px solid grey',
+      borderRadius: '0.7em',
+      padding: '0.5em',
+      cursor: 'pointer',
+      userSelect: 'none'
+    }
+
     return (
         <div className="App">
           <h1>Hello there!!</h1>
@@ -85,7 +94,12 @@ class App extends Component {
             />
           </div>
           <p>
-            <button onClick={this.switchNameOnButtonClickHandler.bind(this, 'Herminio')}> Name switcher!</button>
+            <button
+                onClick={this.switchNameOnButtonClickHandler.bind(this, 'Herminio')}
+                style={buttonStyles}
+            >
+              Name switcher!
+            </button>
           </p>
         </div>
     );
