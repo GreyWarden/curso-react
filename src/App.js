@@ -1,58 +1,65 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Person from "./Components/Person/Person";
 
-class App extends Component {
-  RANDOM_NAMES = ['Herminio', 'Alonsa', 'María del Carmen', 'Pedro José'];
-  state = {
-    persons: [
-      {
-        name: 'Raúl',
-        age: 25,
-        styles: {
-          color: "purple"
-        }
-      },
-      {
-        name: 'Lau',
-        age: 25,
-        styles: {
-          color: "#e2943a"
-        }
-      }
-    ]
-  };
+const app = _ => {
+  const RANDOM_NAMES = ['Herminio', 'Alonsa', 'María del Carmen', 'Pedro José'];
 
-  switchNameOnButtonClickHandler = () => {
+  const [personsState, setPersons] = useState(
+      {
+        persons: [
+          {
+            name: 'Raúl',
+            age: 25,
+            styles: {
+              color: "purple"
+            }
+          },
+          {
+            name: 'Lau',
+            age: 25,
+            styles: {
+              color: "#e2943a"
+            }
+          }
+        ]
+      }
+  )
+
+  const switchNameOnButtonClickHandler = () => {
     const indexOfSelectedPerson = parseInt(
         Math.floor(
-            Math.random() * this.state.persons.length
+            Math.random() * personsState.persons.length
         )
     );
 
     const indexOfSelectedName = parseInt(
         Math.floor(
-            Math.random() * this.RANDOM_NAMES.length
+            Math.random() * RANDOM_NAMES.length
         )
     );
 
-    const newName = this.RANDOM_NAMES[indexOfSelectedName];
-    let persons = this.state.persons;
+    const newName = RANDOM_NAMES[indexOfSelectedName];
+    let persons = personsState.persons;
     persons[indexOfSelectedPerson].name = newName;
 
-    this.setState({ persons })
+    setPersons({persons})
   }
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello there!!</h1>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} styles={this.state.persons[0].styles}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} styles={this.state.persons[1].styles}/>
-        <button onClick={this.switchNameOnButtonClickHandler}> Name switcher! </button>
-      </div>
-    );
-  }
+  return (<div className="App">
+    <h1>Hello there!!</h1>
+    <Person
+        name={personsState.persons[0].name}
+        age={personsState.persons[0].age}
+        styles={personsState.persons[0].styles}
+    />
+    <Person
+        name={personsState.persons[1].name}
+        age={personsState.persons[1].age}
+        styles={personsState.persons[1].styles}
+    />
+    <button onClick={switchNameOnButtonClickHandler}> Name switcher!</button>
+  </div>)
 }
 
-export default App;
+export default app;
