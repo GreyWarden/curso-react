@@ -81,20 +81,8 @@ class App extends Component {
       cursor: 'pointer',
       userSelect: 'none'
     }
-
-    return (
-        <div className="App">
-          <h1>Hello there!!</h1>
-          <p>
-            <button
-                onClick={this.togglePersonsHandler}
-                style={buttonStyles}
-            >
-              Toggle Persons!
-            </button>
-          </p>
-          { this.state.showPersons &&
-            (
+    const persons = this.state.showPersons &&
+          (
               <div className="PersonsContainer">
                 <Person
                     name={this.state.persons[0].name}
@@ -110,8 +98,20 @@ class App extends Component {
                     onChangeHandler={this.nameChangedHandler}
                 />
               </div>
-            )
-          }
+          )
+
+    return (
+        <div className="App">
+          <h1>Hello there!!</h1>
+          <p>
+            <button
+                onClick={this.togglePersonsHandler}
+                style={buttonStyles}
+            >
+              Toggle Persons!
+            </button>
+          </p>
+          { persons }
         </div>
     );
   }
