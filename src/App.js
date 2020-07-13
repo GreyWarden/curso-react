@@ -19,7 +19,8 @@ class App extends Component {
           color: "#e2943a"
         }
       }
-    ]
+    ],
+    showPersons: false
   };
 
   switchNameOnButtonClickHandler = (newName) => {
@@ -65,6 +66,12 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
+    })
+  }
+
   render() {
     const buttonStyles = {
       backgroundColor: 'darkred',
@@ -78,29 +85,33 @@ class App extends Component {
     return (
         <div className="App">
           <h1>Hello there!!</h1>
-          <div className="PersonsContainer">
-            <Person
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}
-                styles={
-                  this.state.persons[0].styles}
-                onClickHandler={this.switchNameOnButtonClickHandler.bind(this, 'Hermin!')}
-            />
-            <Person
-                name={this.state.persons[1].name}
-                age={this.state.persons[1].age}
-                styles={this.state.persons[1].styles}
-                onChangeHandler={this.nameChangedHandler}
-            />
-          </div>
           <p>
             <button
-                onClick={this.switchNameOnButtonClickHandler.bind(this, 'Herminio')}
+                onClick={this.togglePersonsHandler}
                 style={buttonStyles}
             >
-              Name switcher!
+              Toggle Persons!
             </button>
           </p>
+          { this.state.showPersons &&
+            (
+              <div className="PersonsContainer">
+                <Person
+                    name={this.state.persons[0].name}
+                    age={this.state.persons[0].age}
+                    styles={
+                      this.state.persons[0].styles}
+                    onClickHandler={this.switchNameOnButtonClickHandler.bind(this, 'Hermin!')}
+                />
+                <Person
+                    name={this.state.persons[1].name}
+                    age={this.state.persons[1].age}
+                    styles={this.state.persons[1].styles}
+                    onChangeHandler={this.nameChangedHandler}
+                />
+              </div>
+            )
+          }
         </div>
     );
   }
