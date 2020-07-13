@@ -7,7 +7,7 @@
 .PersonsContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: start;
 }
 
 @media (max-width: 535px) {
