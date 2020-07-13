@@ -23,46 +23,11 @@ class App extends Component {
     showPersons: false
   };
 
-  switchNameOnButtonClickHandler = (newName) => {
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons.slice();
+    persons.splice(personIndex, 1);
     this.setState({
-      persons: [
-        {
-          name: newName,
-          age: 25,
-          styles: {
-            color: "purple"
-          }
-        },
-        {
-          name: 'Lau',
-          age: 25,
-          styles: {
-            color: "#e2943a"
-          }
-        }
-      ]
-    })
-  }
-
-  nameChangedHandler = (event) => {
-    const newName = event.target.value;
-    this.setState({
-      persons: [
-        {
-          name: 'Raúl',
-          age: 25,
-          styles: {
-            color: "purple"
-          }
-        },
-        {
-          name: newName,
-          age: 25,
-          styles: {
-            color: "#e2943a"
-          }
-        }
-      ]
+      persons
     })
   }
 
@@ -84,19 +49,14 @@ class App extends Component {
     const persons = this.state.showPersons &&
           (
               <div className="PersonsContainer">
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age}
-                    styles={
-                      this.state.persons[0].styles}
-                    onClickHandler={this.switchNameOnButtonClickHandler.bind(this, 'Hermin!')}
-                />
-                <Person
-                    name={this.state.persons[1].name}
-                    age={this.state.persons[1].age}
-                    styles={this.state.persons[1].styles}
-                    onChangeHandler={this.nameChangedHandler}
-                />
+                {this.state.persons.map(({name, age, styles}, index) => (
+                    <Person
+                        name={name}
+                        age={age}
+                        styles={styles}
+                        onClickHandler={() => this.deletePersonHandler(index)}
+                    />
+                ))}
               </div>
           )
 
