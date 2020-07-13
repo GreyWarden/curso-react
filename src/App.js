@@ -6,6 +6,7 @@ class App extends Component {
   state = {
     persons: [
       {
+        id: 'sdaf23134',
         name: 'Raúl',
         age: 25,
         styles: {
@@ -13,6 +14,7 @@ class App extends Component {
         }
       },
       {
+        id: '213sd12sadfsd',
         name: 'Lau',
         age: 25,
         styles: {
@@ -49,8 +51,9 @@ class App extends Component {
     const persons = this.state.showPersons &&
           (
               <div className="PersonsContainer">
-                {this.state.persons.map(({name, age, styles}, index) => (
+                {this.state.persons.map(({id, name, age, styles}, index) => (
                     <Person
+                        key={id}
                         name={name}
                         age={age}
                         styles={styles}
