@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Components/Person/Person';
-import Radium from 'radium'
 
 class App extends Component {
   state = {
@@ -61,10 +60,6 @@ class App extends Component {
       padding: '0.5em',
       cursor: 'pointer',
       userSelect: 'none',
-      ':hover': {
-        textDecoration: 'underline',
-        backgroundColor: !this.state.showPersons ? 'lightgreen' : 'salmon'
-      }
     }
     const persons = this.state.showPersons &&
           (
@@ -103,4 +98,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;
