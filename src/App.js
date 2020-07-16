@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Components/Person/Person';
+import Button from "./Components/Base/Button/Button";
 
 class App extends Component {
   state = {
@@ -53,14 +54,6 @@ class App extends Component {
   }
 
   render() {
-    const buttonStyles = {
-      backgroundColor: !this.state.showPersons ? 'darkgreen' : 'darkred',
-      border: '1px solid grey',
-      borderRadius: '0.7em',
-      padding: '0.5em',
-      cursor: 'pointer',
-      userSelect: 'none',
-    }
     const persons = this.state.showPersons &&
           (
               <div className='PersonsContainer'>
@@ -85,12 +78,11 @@ class App extends Component {
         <div className='App'>
           <h1>Hello there!!</h1>
           <p>
-            <button
+            <Button
                 onClick={this.togglePersonsHandler}
-                style={buttonStyles}
+                text='Toggle Persons!'
             >
-              Toggle Persons!
-            </button>
+            </Button>
           </p>
           { persons }
         </div>
