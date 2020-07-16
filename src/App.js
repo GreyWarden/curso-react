@@ -1,6 +1,7 @@
-import React, {Component} from "react";
-import "./App.css";
-import Person from "./Components/Person/Person";
+import React, {Component} from 'react';
+import './App.css';
+import Person from './Components/Person/Person';
+import Radium from 'radium'
 
 class App extends Component {
   state = {
@@ -10,7 +11,7 @@ class App extends Component {
         name: 'Raúl',
         age: 25,
         styles: {
-          color: "purple"
+          color: 'purple'
         }
       },
       {
@@ -18,7 +19,7 @@ class App extends Component {
         name: 'Lau',
         age: 25,
         styles: {
-          color: "#e2943a"
+          color: '#e2943a'
         }
       }
     ],
@@ -54,31 +55,39 @@ class App extends Component {
 
   render() {
     const buttonStyles = {
-      backgroundColor: 'darkred',
+      backgroundColor: !this.state.showPersons ? 'darkgreen' : 'darkred',
       border: '1px solid grey',
       borderRadius: '0.7em',
       padding: '0.5em',
       cursor: 'pointer',
-      userSelect: 'none'
+      userSelect: 'none',
+      ':hover': {
+        textDecoration: 'underline',
+        backgroundColor: !this.state.showPersons ? 'lightgreen' : 'salmon'
+      }
     }
     const persons = this.state.showPersons &&
           (
-              <div className="PersonsContainer">
-                {this.state.persons.map(({id, name, age, styles}, index) => (
-                    <Person
-                        key={id}
-                        name={name}
-                        age={age}
-                        styles={styles}
-                        onClickHandler={() => this.deletePersonHandler(index)}
-                        onChangeHandler={(event) => this.changePersonNameHandler(event, id)}
-                    />
-                ))}
+              <div className='PersonsContainer'>
+                {
+                  this.state.persons.map(
+                    ({id, name, age, styles}, index) => (
+                      <Person
+                          key={id}
+                          name={name}
+                          age={age}
+                          styles={styles}
+                          onClickHandler={() => this.deletePersonHandler(index)}
+                          onChangeHandler={(event) => this.changePersonNameHandler(event, id)}
+                      />
+                    )
+                  )
+                }
               </div>
           )
 
     return (
-        <div className="App">
+        <div className='App'>
           <h1>Hello there!!</h1>
           <p>
             <button
@@ -94,4 +103,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
