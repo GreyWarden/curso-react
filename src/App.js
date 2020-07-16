@@ -79,8 +79,9 @@ class App extends Component {
           <h1>Hello there!!</h1>
           <p>
             <Button
-                onClick={this.togglePersonsHandler}
+                onclick={this.togglePersonsHandler}
                 text='Toggle Persons!'
+                toggleColors={this.state.showPersons}
             >
             </Button>
           </p>
