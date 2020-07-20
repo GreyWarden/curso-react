@@ -9,14 +9,19 @@ const person = (
       onClickHandler,
       onChangeHandler
     }
-) => (
-    <Card>
-      <h2 style={styles} onClick={onClickHandler}>
-        My name is {name}, and I'm {age} years old
-      </h2>
-      <input type="text" value={name} onChange={onChangeHandler}/>
-    </Card>
-);
+) => {
+
+  if (Math.random() > 0.7) {
+    throw new Error('Something went wrong. Y te joes')
+  }
+
+  return (<Card>
+    <h2 style={styles} onClick={onClickHandler}>
+      My name is {name}, and I'm {age} years old
+    </h2>
+    <input type="text" value={name} onChange={onChangeHandler}/>
+  </Card>)
+};
 
 const Card = styled.div`
   width: 60%;
