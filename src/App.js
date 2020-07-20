@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Components/Person/Person';
 import Button from "./Components/Base/Button/Button";
 
@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     const persons = this.state.showPersons &&
           (
-              <div className='PersonsContainer'>
+              <div className={classes.PersonsContainer}>
                 {
                   this.state.persons.map(
                     ({id, name, age, styles}, index) => (
@@ -75,7 +75,7 @@ class App extends Component {
           )
 
     return (
-        <div className='App'>
+        <div className={classes.App}>
           <h1>Hello there!!</h1>
           <p>
             <Button
